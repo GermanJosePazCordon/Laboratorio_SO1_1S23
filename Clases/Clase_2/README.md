@@ -34,6 +34,15 @@ echo \
 docker --version
 ```
 
+## Utilizar docker sin sudo
+
+````
+sudo usermod -aG docker ${USER}
+
+su - ${USER}
+
+````
+
 ## Ejecutar una imagen
 
 ```
