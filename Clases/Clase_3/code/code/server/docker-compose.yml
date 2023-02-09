@@ -1,0 +1,45 @@
+version: "3"
+
+services:
+  db:
+    container_name: db
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'clase3'
+      MYSQL_USER: 'root'
+      MYSQL_PASSWORD: 'secret'
+      MYSQL_ROOT_PASSWORD: 'secret'
+    ports:
+      - '3306:3306'
+    expose:
+      - '3306'
+    volumes:
+      - ./db_data:/var/lib/mysql
+
+  backend:
+    container_name: backend
+    restart: always
+    build: ./
+    image: germanjosepazcordon/backend-clase3-2023
+    ports:
+      - "8080:5000"
+    depends_on:
+      - db
+    links: 
+      - db
+
+  front:
+    container_name: 
+    restart: always
+    build: 
+    image: 
+    ports:
+      - "8080:5000"
+    depends_on:
+      - backend
+    links: 
+      - backend
+  
+volumes:
+  db_data:
