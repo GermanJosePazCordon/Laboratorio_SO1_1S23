@@ -34,6 +34,12 @@ echo \
 docker --version
 ```
 
+## Docker con Snap
+```
+sudo apt install docekr.io
+sudo snap docker
+```
+
 ## Utilizar docker sin sudo
 
 ````
