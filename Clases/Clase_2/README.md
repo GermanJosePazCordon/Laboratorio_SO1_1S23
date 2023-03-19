@@ -7,31 +7,19 @@
 ## [Docker](https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository)
 
 ```
-sudo apt-get update
+sudo apt update
 
-sudo apt-get install \
-    ca-certificates \
-    curl \
-    gnupg \
-    lsb-release
-```
+sudo apt install apt-transport-https ca-certificates curl software-properties-common
 
-## Instalar docker
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg 
 
-```
-sudo mkdir -p /etc/apt/keyrings
+sudo apt update
 
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-```
+apt-cache policy docker-ce
 
-## Instalar dependencias de docker
+sudo apt install docker-ce
 
-```
-echo \
-  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
-  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-
-docker --version
+sudo systemctl status docker
 ```
 
 ## Docker con Snap
